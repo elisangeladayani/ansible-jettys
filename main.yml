@@ -1,0 +1,17 @@
+---
+- hosts: jettys
+  vars:
+    project_name: rms
+    jetty_dir: jetty-{{module_name}}
+    jetty_file: jetty-distribution-9.2.4.v20141103
+    jetty_download_url: http://eclipse.c3sl.ufpr.br/jetty/stable-9/dist/{{jetty_file}}.tar.gz
+  tasks:
+  - include: java.yml
+  - include: jetty.yml
+    vars:
+      module_name: core
+      jetty_port: 9001
+  - include: jetty.yml
+    vars:
+      module_name: admin
+      jetty_port: 9000

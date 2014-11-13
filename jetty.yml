@@ -1,0 +1,32 @@
+- name: Create jetty user group
+  group: name=jetty state=present
+
+- name: Create jetty user
+  user: name=jetty groups=jetty
+
+- name: download jetty
+  get_url: url={{jetty_download_url}} dest=/tmp/jetty.tar.gz
+
+- name: extract jetty archive
+  command: tar -xf jetty.tar.gz chdir=/tmp
+
+- name: copy jetty to destination directory
+  command: cp -r /tmp/{{jetty_file}} /opt
+
+- name: clean jetty dir
+  command: rm -rf /opt/{{jetty_dir}}
+
+- name: rename jetty dir
+  command: mv /opt/{{jetty_file}} /opt/{{jetty_dir}}
+
+- name: change jetty port
+  lineinfile: backup=yes state=present dest=/opt/{{jetty_dir}}/start.ini regexp='^jetty.port=8080' backrefs=yes line='jetty.port={{jetty_port}}'
+
+- name: create war config file
+  template: src=webapp_xml.j2 dest=/opt/{{jetty_dir}}/webapps/{{project_name}}_{{module_name}}.xml
+
+- name: change jetty dir owner
+  file: path=/opt/{{jetty_dir}} group=jetty owner=jetty recurse=yes
+
+- name: start jetty
+  command: /opt/{{jetty_dir}}/bin/jetty.sh restart

@@ -1,0 +1,8 @@
+[jettys-dev]
+127.0.0.1 ansible_ssh_port=2222 ansible_ssh_host=localhost app_profile=dev
+
+[jettys-qa]
+127.0.0.1 ansible_ssh_port=2222 ansible_ssh_host=localhost app_profile=qa
+
+[jettys-uat]
+127.0.0.1 ansible_ssh_port=2222 ansible_ssh_host=localhost app_profile=uat
