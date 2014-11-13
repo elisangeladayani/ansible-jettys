@@ -10,7 +10,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "trusty64"
+  config.vm.box = "ubuntu/trusty64"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -22,7 +22,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # accessing "localhost:8080" will access port 80 on the guest machine.
   config.vm.network "forwarded_port", guest: 9000, host: 9000
 
-  config.vm.synced_folder "/Users/jpjcjbr/projects/ansible", "/home/vagrant/projects"
+  config.vm.synced_folder "D:/dev/ansible/ansible-jettys", "/home/vagrant/projects", mount_options: ["dmode=775,fmode=664"]
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.

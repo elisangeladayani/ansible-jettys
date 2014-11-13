@@ -27,6 +27,3 @@
 
 - name: change jetty dir owner
   file: path=/opt/{{jetty_dir}} group=jetty owner=jetty recurse=yes
-
-- name: start jetty
-  command: /opt/{{jetty_dir}}/bin/jetty.sh restart

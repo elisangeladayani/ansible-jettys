@@ -1,8 +1,8 @@
 [jettys-dev]
-127.0.0.1 ansible_ssh_port=2222 ansible_ssh_host=localhost app_profile=dev
+127.0.0.1 app_profile=dev ansible_ssh_private_key_file=../KEY.pem
 
 [jettys-qa]
-127.0.0.1 ansible_ssh_port=2222 ansible_ssh_host=localhost app_profile=qa
+127.0.0.1 app_profile=qa ansible_ssh_port=2222 ansible_ssh_host=localhost
 
 [jettys-uat]
-127.0.0.1 ansible_ssh_port=2222 ansible_ssh_host=localhost app_profile=uat
+127.0.0.1 app_profile=uat ansible_ssh_port=2222 ansible_ssh_host=localhost
