@@ -1,0 +1,6 @@
+To run:
+
+1) Configure hosts inside hosts file
+2) Make sure you have selected the correct tasks to run
+3) Check if the file ../KEYS.pem exists
+3) Run -> ansible-playbook -s -i hosts main.yml
